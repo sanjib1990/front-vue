@@ -1,7 +1,7 @@
 export default class Errors {
     constructor() {
-         this.errors = {};
-     }
+        this.errors = {};
+    }
 
     /**
      * Get a error filed.
@@ -9,11 +9,11 @@ export default class Errors {
      * @param field
      * @return {*}
      */
-     get(field) {
-         if (this.errors[field]) {
-             return this.errors[field][0]
-         }
-     }
+    get(field) {
+        if (this.errors[field]) {
+            return this.errors[field][0]
+        }
+    }
 
     /**
      * Set the error object.
@@ -22,9 +22,9 @@ export default class Errors {
      * @return {Errors}
      */
     record(error) {
-         this.errors = error;
+        this.errors = error;
 
-         return this;
+        return this;
     }
 
     /**

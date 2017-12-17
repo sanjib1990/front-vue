@@ -1,17 +1,6 @@
-import Vue from 'vue';
-import axios from 'axios';
+import { createApp } from 'vue'
 import App from './App.vue'
-import router from './routes';
-import VueRouter from "vue-router";
+import router from './router'
+import store from './store'
 
-window.axios = axios.create({
-    baseURL: 'http://laravel55.dev',
-});
-
-Vue.use(VueRouter);
-
-new Vue({
-    el: '#app',
-    router,
-    render: h => h(App),
-});
+createApp(App).use(store).use(router).mount('#app')
