@@ -1,3 +1,4 @@
+import async from "./http";
 import Errors from "./Errors";
 
 export default class Form{
@@ -34,7 +35,7 @@ export default class Form{
      */
     submit(method, url, options) {
         return new Promise((resolve, reject) => {
-            axios[method](url, this.data())
+            async[method](url, this.data())
                 .then(response => {
                     this.onSuccess(response);
 

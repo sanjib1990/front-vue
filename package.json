@@ -7,14 +7,21 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/*.spec.js"
   },
   "dependencies": {
     "ava": "^0.24.0",
     "axios": "^0.17.1",
+    "expect": "^21.2.1",
+    "jsdom": "^11.5.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^4.0.1",
+    "mocha-webpack": "^1.0.1",
     "moment": "^2.19.4",
     "vue": "^2.4.4",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-test-utils": "^1.0.0-beta.8"
   },
   "browserslist": [
     "> 1%",
@@ -30,7 +37,7 @@
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
     "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4",
+    "vue-template-compiler": "^2.5.11",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
   }

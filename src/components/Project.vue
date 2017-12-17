@@ -38,6 +38,7 @@
 
 <script>
     import moment from "moment";
+    import async from "../utils/http";
     import Form from "../utils/Form";
 
     export default {
@@ -60,7 +61,7 @@
         },
         methods: {
             getAll: function () {
-                axios
+                async
                     .get('/api/projects')
                     .then(response => {
                         this.projects = response.data;
