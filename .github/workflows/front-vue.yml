@@ -30,10 +30,6 @@ jobs:
       - uses: actions/checkout@v2
         name: Checkout
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-
       - name: Install dependencies
         run: yarn install # this is just for sake of doing it, will use docker
 
