@@ -78,8 +78,8 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           GITHUB_TOKEN: ${{ secrets.PAT }}
           ALIAS_DOMAINS: |
-            {SHA}.vercel.app
-          PR_PREVIEW_DOMAIN: "{SHA}.now.sh"
+            {USER}-{REPO}-{SHA}.vercel.app
+          PR_PREVIEW_DOMAIN: "{USER}-{REPO}-{SHA}.now.sh"
       - if: ${{ github.ref == 'refs/head/master' }}
         uses: BetaHuhn/deploy-to-vercel-action@v1
         name: Vercel Deploy Prod
