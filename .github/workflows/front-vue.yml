@@ -65,7 +65,6 @@ jobs:
         name: Cancel Previous Runs
         with:
           token: ${{ secrets.PAT }}
-
       - uses: BetaHuhn/deploy-to-vercel-action@v1
         name: Vercel Deploy
         with:
