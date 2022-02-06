@@ -8,7 +8,6 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -66,8 +65,18 @@ jobs:
         name: Cancel Previous Runs
         with:
           token: ${{ secrets.PAT }}
-      - uses: BetaHuhn/deploy-to-vercel-action@v1
-        name: Vercel Deploy
+      - if: ${{ github.ref != 'refs/head/master' }}
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        name: Vercel Deploy Non-Prod
+        with:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          ALIAS_DOMAINS: $GITHUB_SHA.vercel.app
+      - if: ${{ github.ref == 'refs/head/master' }}
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        name: Vercel Deploy Prod
         with:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
