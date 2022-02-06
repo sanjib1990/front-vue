@@ -67,7 +67,7 @@ jobs:
           token: ${{ secrets.PAT }}
       - uses: BetaHuhn/deploy-to-vercel-action@v1
         name: Vercel Deploy Non-Prod
-        if: github.ref != 'refs/head/master'
+        if: ${{ github.ref != 'refs/head/master' }}
         with:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -76,7 +76,7 @@ jobs:
           ALIAS_DOMAINS: {SHA}.vercel.app
       - uses: BetaHuhn/deploy-to-vercel-action@v1
         name: Vercel Deploy Prod
-        if: github.ref == 'refs/head/master'
+        if: ${{ github.ref == 'refs/head/master' }}
         with:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
